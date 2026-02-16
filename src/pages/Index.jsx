@@ -1,15 +1,19 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import HeroSection from "../components/HeroSection";
+import CatalogSection from "../components/CatalogSection";
+import FAQSection from "../components/FAQSection";
 import Footer from "../components/Footer";
 
 const Index = () => {
   return (
-    <main style={{minHeight:"100vh",textAlign:"center",marginTop:80}}>
-      <h1>Proyecto React listo 🚀</h1>
-      <p>Este proyecto ya está preparado para GitHub.</p>
-      <Link to="/guia/demo">Ir a guía demo</Link>
+    <div className="min-h-screen bg-white">
+      <HeroSection />
+      <CatalogSection />
+      <FAQSection />
       <Footer />
-    </main>
+    </div>
   );
 };
 
 export default Index;
+
