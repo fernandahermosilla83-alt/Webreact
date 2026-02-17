@@ -1,4 +1,16 @@
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #003b4d; /* Azul petróleo Raindoor */
+  --accent: #f2e144;     /* Amarillo vibrante */
+  --card: #002e3b;       /* Azul más oscuro para tarjetas */
 }
+
+body {
+  background-color: #f8fafc; /* Fondo general claro para el catálogo */
+  color: #0f172a;
+  font-family: 'Inter', sans-serif;
+}
+
