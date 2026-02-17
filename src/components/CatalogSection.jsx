@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { guides, categoryLabels } from "../data/guides"; // Ruta corregida
+import React, { useState } from "react";
+import { guides, categoryLabels } from "../data/guides";
 import GuideCard from "./GuideCard";
 
 const categories = ["todas", "cardio", "fuerza", "flexibilidad", "rutinas-rapidas"];
@@ -12,34 +12,37 @@ const CatalogSection = () => {
     : guides.filter((g) => g.category === activeCategory);
 
   return (
-    <section id="catalogo" className="py-24 px-6">
+    /* Fondo blanco puro para el catálogo */
+    <section id="catalogo" className="py-24 px-6 bg-white">
       <div className="container mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Nuestras Guías</h2>
-          <p className="text-gray-600 max-w-md mx-auto">
+        <div className="mb-12">
+          <h2 className="text-3xl font-black text-[#003b4d] tracking-tighter italic">
+            NUESTRAS GUÍAS
+          </h2>
+          <p className="text-gray-500 text-sm mt-2">
             Elige la guía que se adapte a tu nivel y objetivo.
           </p>
         </div>
 
-        {/* Filtros */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        {/* Filtros minimalistas */}
+        <div className="flex flex-wrap gap-2 mb-12">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`px-6 py-2 rounded-full text-[10px] font-bold tracking-widest transition-all ${
                 activeCategory === cat
-                  ? "bg-blue-600 text-white shadow-md"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  ? "bg-[#003b4d] text-[#f2e144] shadow-lg"
+                  : "bg-gray-100 text-gray-400 hover:bg-gray-200"
               }`}
             >
-              {cat === "todas" ? "Todas" : categoryLabels[cat]}
+              {cat === "todas" ? "TODAS" : categoryLabels[cat].toUpperCase()}
             </button>
           ))}
         </div>
 
-        {/* Grilla de Tarjetas */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Grilla de guías */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {filtered.map((guide, i) => (
             <GuideCard key={guide.id} guide={guide} index={i} />
           ))}
