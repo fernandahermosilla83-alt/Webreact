@@ -1,32 +1,34 @@
 import React from "react";
+import { categoryLabels } from "../data/guides";
 
 const GuideCard = ({ guide }) => {
   return (
-    <div className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all border border-gray-100">
-      <div className="relative aspect-[4/5] overflow-hidden">
+    <div className="group cursor-pointer">
+      {/* Contenedor de Imagen */}
+      <div className="relative aspect-[4/5] rounded-3xl overflow-hidden mb-4 shadow-sm group-hover:shadow-xl transition-all duration-500">
         <img
           src={guide.image}
           alt={guide.title}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        {/* Círculo amarillo flotante estilo Raindoor */}
-        <div className="absolute bottom-4 right-4 w-12 h-12 bg-[#f2e144] rounded-full flex items-center justify-center shadow-lg">
-           <span className="text-[#003b4d] font-bold">+</span>
+        {/* El círculo amarillo "Plus" */}
+        <div className="absolute bottom-4 right-4 w-10 h-10 bg-[#f2e144] rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+           <span className="text-[#003b4d] font-bold text-xl">+</span>
+        </div>
+        {/* Badge de categoría */}
+        <div className="absolute top-4 left-4 bg-[#003b4d]/80 backdrop-blur-sm text-[#f2e144] text-[9px] font-bold px-3 py-1 rounded-full tracking-widest">
+           {categoryLabels[guide.category].toUpperCase()}
         </div>
       </div>
 
-      <div className="p-6">
-        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
-          {guide.category}
-        </span>
-        <h3 className="text-xl font-bold text-[#003b4d] mt-1 group-hover:text-blue-600 transition-colors">
+      {/* Información */}
+      <div className="px-2">
+        <h3 className="text-lg font-bold text-[#003b4d] leading-tight group-hover:text-blue-600 transition-colors">
           {guide.title}
         </h3>
-        <div className="flex justify-between items-center mt-4">
-          <span className="text-2xl font-black text-[#003b4d]">${guide.price}</span>
-          <button className="text-xs font-bold underline hover:text-blue-600">
-            VER DETALLE
-          </button>
+        <div className="flex items-center mt-2 space-x-2">
+          <span className="text-xl font-black text-[#003b4d]">${guide.price}</span>
+          <span className="text-[10px] font-bold text-gray-400 underline decoration-[#f2e144] decoration-2 underline-offset-4">VER DETALLE</span>
         </div>
       </div>
     </div>
